@@ -1,4 +1,23 @@
-gtvar createError = require('http-errors');
+var mysqlssh = require('mysql-ssh');
+let con;
+mysqlssh.connect(
+    {
+      host: '',
+      user: 'ubuntu',
+      privateKey: fs.readFileSync('/Users/brycehiraoka/Documents/testKeyPair.pem')
+    },
+    {
+      host:'localhost',
+      user: 'root',
+      password: '123456',
+      database: 'demo'
+    }
+).then(client => {
+      con = client;
+    }
+);
+
+var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
