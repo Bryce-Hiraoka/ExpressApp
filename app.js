@@ -2,7 +2,7 @@ var mysqlssh = require('mysql-ssh');
 let con;
 mysqlssh.connect(
     {
-      host: '',
+      host: 'ec2-54-176-174-110.us-west-1.compute.amazonaws.com',
       user: 'ubuntu',
       privateKey: fs.readFileSync('/Users/brycehiraoka/Documents/testKeyPair.pem')
     },
