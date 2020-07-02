@@ -26,4 +26,8 @@ router.post('/submitUser', function(req, res){
   })
 });
 
+router.get('/signin', function(req, res){
+  res.render('signin', {title: "Please Sign In"});
+});
+
 module.exports = router;
