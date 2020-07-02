@@ -38,7 +38,7 @@ router.post('/signinUser', function(req, res){
   const db = req.con;
   db.query("SELECT * FROM accounts", accountInfo, function(rows, err){
     if(err) {
-      console.log(err);
+      res.redirect('signin');
     }else{
       res.send("Signin successful");
     }
