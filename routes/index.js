@@ -38,6 +38,7 @@ router.post('/authenticateUsers', function(req, res){
   const db = req.con;
   db.query("SELECT * FROM accounts WHERE email=?", accountInfo.email, function(err, rows){
     if(err) {
+      console.log(err);
       res.redirect('signup');
     }else{
       console.log(rows);
