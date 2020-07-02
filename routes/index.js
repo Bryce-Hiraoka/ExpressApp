@@ -39,12 +39,12 @@ router.post('/authenticateUsers', function(req, res){
   db.query("SELECT * FROM accounts WHERE email=?", accountInfo.email, function(err, rows){
     if(err) {
       console.log(err);
-      res.redirect('signup');
+      res.redirect('/signup');
     }else{
-
-      if(rows.length!==0&&rows[0].password===accountInfo.password) {
-          console.log(rows);
-          res.send("Signin successful");
+      if(rows.length!==0&&rows[0].password===accountInfo.password){
+        res.send("Signin done");
+      }else{
+        res.redirect('/signup');
       }
     }
   })
