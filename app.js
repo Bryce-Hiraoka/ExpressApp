@@ -1,4 +1,5 @@
 var mysqlssh = require('mysql-ssh');
+var fs = require('fs')
 let con;
 mysqlssh.connect(
     {
