@@ -36,11 +36,13 @@ router.post('/authenticateUsers', function(req, res){
     password: req.body.password
   };
   const db = req.con;
-  db.query("SELECT * FROM accounts", accountInfo, function(rows, err){
+  db.query("SELECT * FROM accounts WHERE email=?", accountInfo.email, function(err, rows){
     if(err) {
       res.redirect('signup');
     }else{
+      console.log(rows);
       res.send("Signin successful");
+
     }
   })
 });
