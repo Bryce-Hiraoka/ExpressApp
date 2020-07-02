@@ -41,9 +41,11 @@ router.post('/authenticateUsers', function(req, res){
       console.log(err);
       res.redirect('signup');
     }else{
-      console.log(rows);
-      res.send("Signin successful");
 
+      if(rows.length!==0&&rows[0].password===accountInfo.password) {
+          console.log(rows);
+          res.send("Signin successful");
+      }
     }
   })
 });
