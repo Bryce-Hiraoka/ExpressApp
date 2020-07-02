@@ -30,4 +30,19 @@ router.get('/signin', function(req, res){
   res.render('signin', {title: "Please Sign In"});
 });
 
+router.post('/signinUser', function(req, res){
+  const accountInfo = {
+    email: req.body.email,
+    password: req.body.password
+  };
+  const db = req.con;
+  db.query("SELECT * FROM accounts", accountInfo, function(rows, err){
+    if(err) {
+      console.log(err);
+    }else{
+      res.send("Signin successful");
+    }
+  })
+});
+
 module.exports = router;
