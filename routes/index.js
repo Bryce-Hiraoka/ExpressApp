@@ -30,7 +30,7 @@ router.get('/signin', function(req, res){
   res.render('signin', {title: "Please Sign In"});
 });
 
-router.post('/signinUser', function(req, res){
+router.post('/authenticateUsers', function(req, res){
   const accountInfo = {
     email: req.body.email,
     password: req.body.password
@@ -38,7 +38,7 @@ router.post('/signinUser', function(req, res){
   const db = req.con;
   db.query("SELECT * FROM accounts", accountInfo, function(rows, err){
     if(err) {
-      res.redirect('signin');
+      res.redirect('signup');
     }else{
       res.send("Signin successful");
     }
