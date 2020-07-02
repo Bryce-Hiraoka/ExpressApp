@@ -39,6 +39,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use(function(req, res, next) {
+    req.con = con;
+    next();
+});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -47,10 +53,6 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-app.use(function(req, res, next) {
-    req.con = con;
-    next();
-});
 
 // error handler
 app.use(function(err, req, res, next) {

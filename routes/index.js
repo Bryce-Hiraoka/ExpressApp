@@ -16,6 +16,7 @@ router.post('/submitUser', function(req, res){
     password: req.body.password
   };
   const db = req.con;
+  console.log(db);
   db.query("INSERT INTO accounts SET ?", accountInfo, function(rows, err){
     if(err) {
       console.log(err);
